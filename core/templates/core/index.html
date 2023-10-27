@@ -211,15 +211,11 @@
                                     <ul class="menu-vertical sf-arrows">
                                         <li class="item-lead"><a href="#">Daily offers</a></li>
                                         <li class="item-lead"><a href="#">Gift Ideas</a></li>
-                                        <li><a href="#">Beds</a></li>
-                                        <li><a href="#">Lighting</a></li>
-                                        <li><a href="#">Sofas & Sleeper sofas</a></li>
-                                        <li><a href="#">Storage</a></li>
-                                        <li><a href="#">Armchairs & Chaises</a></li>
-                                        <li><a href="#">Decoration </a></li>
-                                        <li><a href="#">Kitchen Cabinets</a></li>
-                                        <li><a href="#">Coffee & Tables</a></li>
-                                        <li><a href="#">Outdoor Furniture </a></li>
+
+                                        {% for category in categories %}
+                                            <li><a href="#">{{ category }}</a></li>
+                                        {% endfor %}
+
                                     </ul><!-- End .menu-vertical -->
                                 </nav><!-- End .side-nav -->
                             </div><!-- End .dropdown-menu -->
@@ -820,28 +816,30 @@
                                     }
                                 }
                             }'>
-                            <div class="product product-11 text-center">
-                                <figure class="product-media">
-                                    <a href="product.html">
-                                        <img src="{% static 'core/images/demos/demo-2/products/product-1-1.jpg' %}" alt="Product image" class="product-image">
-                                        <img src="{% static 'core/images/demos/demo-2/products/product-1-2.jpg' %}" alt="Product image" class="product-image-hover">
-                                    </a>
+                            {% for product in products %}
+                                <div class="product product-11 text-center">
+                                    <figure class="product-media">
+                                        <a href="product.html">
+                                            <img src="{{ product.image1.url }}" alt="Product image" class="product-image">
+                                            <img src="{% static 'core/images/demos/demo-2/products/product-1-2.jpg' %}" alt="Product image" class="product-image-hover">
+                                        </a>
 
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist"><span>add to wishlist</span></a>
-                                    </div><!-- End .product-action-vertical -->
-                                </figure><!-- End .product-media -->
+                                        <div class="product-action-vertical">
+                                            <a href="#" class="btn-product-icon btn-wishlist"><span>add to wishlist</span></a>
+                                        </div><!-- End .product-action-vertical -->
+                                    </figure><!-- End .product-media -->
 
-                                <div class="product-body">
-                                    <h3 class="product-title"><a href="product.html">Butler Stool Ladder</a></h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        $251,00
-                                    </div><!-- End .product-price -->
-                                </div><!-- End .product-body -->
-                                <div class="product-action">
-                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                </div><!-- End .product-action -->
-                            </div><!-- End .product -->
+                                    <div class="product-body">
+                                        <h3 class="product-title"><a href="product.html">{{ product.name }}</a></h3><!-- End .product-title -->
+                                        <div class="product-price">
+                                            ${{ product.price }}
+                                        </div><!-- End .product-price -->
+                                    </div><!-- End .product-body -->
+                                    <div class="product-action">
+                                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                    </div><!-- End .product-action -->
+                                </div><!-- End .product -->
+                            {% endfor %}
 
                             <div class="product product-11 text-center">
                                 <figure class="product-media">
